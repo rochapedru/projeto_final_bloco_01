@@ -1,4 +1,4 @@
-package projeto_final_bloco_01;
+package main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import modelo.Produto;
 
-public class menuEletronicos {
+public class Loja {
 	private static Scanner input = new Scanner(System.in);
 	private static ArrayList<Produto> produtos;
 	
@@ -26,11 +26,7 @@ public class menuEletronicos {
 	//O menuzinho
 	
 	private static void menu() {
-		System.out.println("1.Cadastrar pedidos ");
-		System.out.println("2.Listas eletronicos");
-		System.out.println("3.Comprar eletronicos ");
-		System.out.println("4.Carrinho ");
-		System.out.println("5.sair");
+		System.out.println("1.Cadastrar. 2.Listas,  3.Comprar, 4.Carrinho, 5.sair");
 		
 		int op = input.nextInt();
 		
@@ -116,3 +112,4 @@ public class menuEletronicos {
 		
 	}
 }
+
