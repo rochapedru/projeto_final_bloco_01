@@ -26,7 +26,12 @@ public class Loja {
 	//O menuzinho
 	
 	private static void menu() {
-		System.out.println("1.Cadastrar. 2.Listas,  3.Comprar, 4.Carrinho, 5.sair");
+		System.out.println("BIG BANG - COMPRE PEÇAS DE COMPUTADORES E SERVIDORES");
+		System.out.println("1.Adicionar pelas e equipamentos = FUNCIONARIO ");
+		System.out.println("2.Listas de peças e equipamentos na Big bANG");
+		System.out.println("3.  Comprar alguma peça ou equipamento");
+		System.out.println("4.Carrinho de compras");
+		System.out.println("5.sair");
 		
 		int op = input.nextInt();
 		
