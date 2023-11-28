@@ -1,12 +1,10 @@
 package repository;
-import main.Loja;
+
 import modelo.Produto;
-import utils.Utils;
 
 public interface Repository {
-    void listar();
-
+    void criarProduto(Produto produto); // Create
+    Produto lerProduto(int id); // Read
+    void atualizarProduto(Produto produto); // Update
+    void deletarProduto(int id); // Delete
 }
-
-
-

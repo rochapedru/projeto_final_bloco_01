@@ -6,7 +6,6 @@ import java.util.Scanner;
 import modelo.Produto;
 import modelo.Controller;
 import utils.Utils;
-
 public class Loja {
 	private static Scanner input = new Scanner(System.in);
 	private static ArrayList<Produto> produtos;
@@ -18,7 +17,6 @@ public class Loja {
 		carrinho = new HashMap<>();
 		menu();
 	}
-
 	private static void menu() {
 		System.out.println("1.BIG BANGS PEÇAS DE COMPUTADORES");
 		System.out.println("1.Cadastrar. 2.Listas, 3.Comprar por ID do Eletronico, 4- finalizar Comprar, 5.sair");
@@ -37,7 +35,6 @@ public class Loja {
 			}
 		}
 	} 
-
 	private static void cadastrarProdutos() {
 		System.out.println("Nome do Produto: ");
 		String nome = input.next();
@@ -48,12 +45,10 @@ public class Loja {
 		System.out.println(produto.getNome() + " Cadastrato com sucesso");
 		menu();
 	}	
-	
 	private static void listarProdutos() {
 	    System.out.println(controller.listarProdutos(produtos));
 	    menu();
 	}
-	
 	private static void comprarProdutos() {
 	    System.out.println("Digite o ID do produto que deseja comprar:  ");
 	    int id = Integer.parseInt(input.next());
@@ -67,7 +62,6 @@ public class Loja {
 	        menu();
 	    }
 	}
-
 	private static void finalizarCompra() {
 	    controller.finalizarCompra(carrinho);
 	    menu();

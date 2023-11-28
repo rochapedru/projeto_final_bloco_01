@@ -1,13 +1,9 @@
 package modelo;
 import java.util.List;
 import java.util.Map;
-
 import utils.Utils;
-
 public class Controller {
-    // Supondo que produtos seja uma lista de produtos
     private List<Produto> produtos;
-
     public String listarProdutos(List<Produto> produtos) {
         StringBuilder sb = new StringBuilder();
         if (produtos.size() > 0) {
