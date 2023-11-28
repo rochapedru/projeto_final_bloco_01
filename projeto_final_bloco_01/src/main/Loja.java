@@ -1,120 +1,78 @@
 package main;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
 import modelo.Produto;
+import modelo.Controller;
+import utils.Utils;
 
 public class Loja {
 	private static Scanner input = new Scanner(System.in);
 	private static ArrayList<Produto> produtos;
-	
-	//Metodo para carrinho de compras
-	// valor vai ser a quantidade
 	private static Map<Produto, Integer> carrinho;
-	
+	private static Controller controller = new Controller();
+
 	public static void main(String[] args) {
 		produtos = new ArrayList<>();
-		//interface q implementa o map 
 		carrinho = new HashMap<>();
-		//menu que a gente ainda vai criar
 		menu();
-		
 	}
-	//O menuzinho
-	
+
 	private static void menu() {
-		System.out.println("BIG BANG - COMPRE PEÇAS DE COMPUTADORES E SERVIDORES");
-		System.out.println("1.Adicionar pelas e equipamentos = FUNCIONARIO ");
-		System.out.println("2.Listas de peças e equipamentos na Big bANG");
-		System.out.println("3.  Comprar alguma peça ou equipamento");
-		System.out.println("4.Carrinho de compras");
-		System.out.println("5.sair");
-		
+		System.out.println("1.BIG BANGS PEÇAS DE COMPUTADORES");
+		System.out.println("1.Cadastrar. 2.Listas, 3.Comprar por ID do Eletronico, 4- finalizar Comprar, 5.sair");
 		int op = input.nextInt();
-		
 		switch (op) {
-		case 1: 
-			cadastrarProdutos();
-			break;
-		case 2: 
-			listarProdutos();
-			break;
-		case 3: 
-			comprarProdutos();
-			break;
-		case 4: 
-			verCarrinho();
-			break;
-		case 5:
-			System.out.println("Volte sempre");
-			System.exit();
-		default:
-			System.out.println("Opcao Invalida");
-			menu();
-			break;
+			case 1 -> cadastrarProdutos();
+			case 2 -> listarProdutos();
+			case 3 -> comprarProdutos();
+			case 4 -> finalizarCompra();
+			case 5 -> { 
+				System.out.println("Saindo do programa");
+				System.exit(0);
+			} default -> {
+				System.out.println("Erro");
+				menu(); 
+			}
 		}
-	
-		
-	}
+	} 
+
 	private static void cadastrarProdutos() {
 		System.out.println("Nome do Produto: ");
 		String nome = input.next();
-		
 		System.out.println("Preco do produto: ");
 		Double preco = input.nextDouble();
-		
-		// Instanciar nosso produto
 		Produto produto = new Produto(nome, preco);
-		
-		//adicioanr na nossa array produtos
 		produtos.add(produto);
-
 		System.out.println(produto.getNome() + " Cadastrato com sucesso");
 		menu();
-	}
+	}	
 	
 	private static void listarProdutos() {
-		//Verificar se nao estavazia
-		if (produtos.size() > 0) {
-			System.out.println("Lista de produtos! \n");
-			
-			//Percorrer, e mostrar cada produto
-			for(Produto p : produtos) {
-				System.out.println(p);
-				
-			}
-		}else {
-			System.out.println("Nenhum Produto Cadastrado");
-		}
-		
-		menu();
+	    System.out.println(controller.listarProdutos(produtos));
+	    menu();
 	}
+	
 	private static void comprarProdutos() {
-		// Verificar se temos o produto no mercado
-		// entao para comecar
-		// copiar de listar produtos
-		if (produtos.size() > 0) {
-			System.out.println("codigo do produtos! \n");
-			
-			System.out.println("Produtos Disponiveis \n");
-			//Para cada produtos, na lista de produto, eu mostro produto
-			for(Produto p : produtos) {
-				System.out.println(p + "\n");
-				
-			}
-			
-			int id = Integer.parseInt(input.next());
-			boolean isPresent = false;
-			
-			for (produto p : produtos) {
-				if ()
-			}
-			
-		}
-		
+	    System.out.println("Digite o ID do produto que deseja comprar:  ");
+	    int id = Integer.parseInt(input.next());
+	    controller.comprarProdutos(produtos, carrinho, id);
+	    
+	    System.out.println("Deseja continuar comprando? 1 - Sim, 2 - Não");
+	    int opcao = Integer.parseInt(input.next());
+	    if (opcao == 1) {
+	        comprarProdutos();
+	    } else {
+	        menu();
+	    }
 	}
+
+	private static void finalizarCompra() {
+	    controller.finalizarCompra(carrinho);
+	    menu();
+	}
+
 }
+
 
